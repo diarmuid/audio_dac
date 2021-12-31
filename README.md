@@ -13,12 +13,16 @@ sudo cp diarmuid_dac.dtbo /boot/overlays/
 ```
 ## Add to config
 ```
-sudo echo "dtoverlay=diarmuid_dac" >> /boot/config.txt 
-sudo echo "dtdebug=on" >> /boot/config.txt 
+echo "dtoverlay=diarmuid_dac" | sudo tee -a /boot/config.txt 
+echo "dtdebug=on" | sudo tee -a /boot/config.txt 
+echo "dtparam=i2c_arm=on" | sudo tee -a /boot/config.txt 
+echo "dtparam=i2s=on" | sudo tee -a /boot/config.txt 
+
 ```
 
-## Debnug
+## Debug
 ```
 sudo vcdbg log msg
+sudo i2cdetect -y 1
 
 ```
